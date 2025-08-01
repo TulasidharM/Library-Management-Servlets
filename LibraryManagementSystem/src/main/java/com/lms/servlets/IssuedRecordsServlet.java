@@ -8,16 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/hitButton")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/IssuedRecordsServlet")
+public class IssuedRecordsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-     
+      
 	public void init() {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			System.out.println("Class not found");
-		}
+		System.out.println("came to this");
 	}
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,10 +23,7 @@ public class HomeServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String buttonSelected = request.getParameter("homeButton");
-		
-		request.setAttribute("fileToRender",buttonSelected+".jsp");
-		request.getRequestDispatcher(buttonSelected+"Servlet").forward(request, response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 }
