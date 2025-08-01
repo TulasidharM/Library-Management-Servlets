@@ -3,7 +3,6 @@
 	<name>LibraryManagementSystem</name>
 	<comment></comment>
 	<projects>
-		<project>taglibs-standard-impl-1.2.5</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
