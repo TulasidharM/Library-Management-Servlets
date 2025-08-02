@@ -1,5 +1,7 @@
 package com.lms.model;
 
+import java.util.Objects;
+
 public class Member {
 	private int member_Id;
 	private String member_Name;
@@ -64,5 +66,20 @@ public class Member {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) 
+			return true;
+		if (obj == null || getClass() != obj.getClass()) 
+			return false;
+		Member member = (Member) obj;
+		return this.member_Id == member.member_Id;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(member_Id);
 	}
 }

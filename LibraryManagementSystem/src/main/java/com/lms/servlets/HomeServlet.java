@@ -14,7 +14,7 @@ public class HomeServlet extends HttpServlet {
      
 	public void init() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Class not found");
 		}
@@ -28,7 +28,6 @@ public class HomeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String buttonSelected = request.getParameter("homeButton");
-		
 		request.setAttribute("fileToRender",buttonSelected+".jsp");
 		request.getRequestDispatcher(buttonSelected+"Servlet").forward(request, response);
 	}

@@ -6,12 +6,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Library Management System</title>
-	
-	<script type="text/javascript">
-		function testFunc(){
-			console.log("Hello world");
-		}
-	</script>
 </head>
 	
 	
@@ -33,6 +27,7 @@
     
     <% 
     	String fileToRender = (String) request.getAttribute("fileToRender");
+    	out.println(fileToRender);
     	fileToRender = fileToRender == null ? "EmptyComponent.jsp" : fileToRender;
     %>
    	
