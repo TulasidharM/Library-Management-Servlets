@@ -30,7 +30,10 @@ public class Book {
 		this.book_Status = book_Status;
 		this.book_Availability = book_Availability;
 	}
-
+	
+	public Book() {
+		this("","","");
+	}
 
 	public String getBook_Title() {
 		return book_Title;

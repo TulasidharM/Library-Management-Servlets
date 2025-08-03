@@ -20,7 +20,6 @@ public class ViewBooksServlet extends HttpServlet {
 	BookService bookService ;
       
 	public void init() {
-		System.out.println("cameIntoBooks");
 		bookService = new BookServiceImpl();
 	}
     

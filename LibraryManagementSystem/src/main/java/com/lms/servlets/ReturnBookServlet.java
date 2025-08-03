@@ -21,7 +21,6 @@ import com.lms.service.impl.BookServiceImpl;
 import com.lms.service.impl.IssueLogServiceImpl;
 import com.lms.service.impl.MemberServiceImpl;
 
-
 @WebServlet("/ReturnBookServlet")
 public class ReturnBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -61,7 +60,9 @@ public class ReturnBookServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action=request.getParameter("action");
 		PrintWriter out=response.getWriter();
+		System.out.println(action);
 		if("Search".equals(action)) {
+			System.out.println("Came to search for member's books");
 			try {
 				if(request.getParameter("email").isEmpty()) {
 					if(request.getParameter("members").isEmpty()) {
