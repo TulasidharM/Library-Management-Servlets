@@ -22,7 +22,9 @@ public class AddBookServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println(request.getParameter("bookTitle"));
+		System.out.println(request.getParameter("category"));
+		request.setAttribute(getServletName(), response);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
