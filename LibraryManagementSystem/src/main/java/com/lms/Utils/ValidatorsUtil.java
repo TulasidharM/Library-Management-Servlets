@@ -73,7 +73,7 @@ public class ValidatorsUtil {
 			throw new IllegalArgumentException("Member fields cannot be empty");
         }
         
-        if(!member.getMember_Name().matches("^[A-Za-z]{2}[A-Za-z0-9\\\\s]{0,253}$")) {
+        if(!member.getMember_Name().matches("^[A-Za-z]{2}[A-Za-z0-9\\s]{0,253}$")) {
         	throw new IllegalArgumentException("Please enter a valid name!");
         }
        
