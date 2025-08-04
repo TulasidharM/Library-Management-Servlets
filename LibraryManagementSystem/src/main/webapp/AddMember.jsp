@@ -6,6 +6,78 @@
 <head>
 <meta charset="UTF-8">
 <title>Add Member</title>
+<style>
+    .add-member-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .add-member-title {
+        color: #34495e;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2em;
+        font-weight: 600;
+    }
+    .add-member-form-group {
+        margin-bottom: 20px;
+    }
+    .add-member-label {
+        display: block;
+        margin-bottom: 8px;
+        color: #34495e;
+        font-weight: 500;
+        font-size: 0.95em;
+    }
+    .add-member-input, .add-member-select, .add-member-textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #7f8c8d;
+        border-radius: 6px;
+        font-size: 1em;
+        color: #34495e;
+        box-sizing: border-box;
+    }
+    .add-member-input:focus, .add-member-select:focus, .add-member-textarea:focus {
+        border-color: #34495e;
+        outline: none;
+        box-shadow: 0 0 5px rgba(52, 73, 94, 0.2);
+    }
+    .add-member-submit {
+        width: 48%;
+        padding: 14px;
+        background-color: #34495e;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1em;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-right: 2%;
+    }
+    .add-member-cancel {
+        width: 48%;
+        padding: 14px;
+        background-color: #7f8c8d;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1em;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    .add-member-submit:hover {
+        background-color: #7f8c8d;
+    }
+    .add-member-cancel:hover {
+        background-color: #34495e;
+    }
+</style>
 </head>
 <body>
 	<h1>Add Member</h1>
