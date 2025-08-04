@@ -18,15 +18,13 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	
-	//TODO : throw error here
+	
     @Override
-    public void addNewMember(Member member) {
-    	try {
+    public void addNewMember(Member member) throws IllegalArgumentException{
+    	
     		ValidatorsUtil.validateMember(member);
     		memberDao.insertMember(member);
-    	}catch(IllegalArgumentException e) {
-    		System.out.println(e.getMessage());
-    	} 
+    	
     }
     
     @Override

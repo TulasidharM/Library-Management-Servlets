@@ -85,13 +85,21 @@
             background-color: #7f8c8d;
         }
     </style>
+    
+    <script type="text/javascript">
+    	<% String alertMessage = (String) request.getAttribute("alertMessage"); %>
+    	
+    	<%if(request.getAttribute("alertMessage") != null){%>
+    	 	alert('<%= alertMessage %>');
+    	<%}%>
+    </script>
 </head>
 <body>
     <div class="add-book-container">
-        <h1 class="add-book-title">Add Book</h1>
+        <h1 class="add-book-title">Add Book  </h1>
         <form action='AddBookServlet' method='POST' class="add-book-form">
             <div class="add-book-form-group">
-                <label class="add-book-label" for="bookTitle">Enter book title</label>
+                <label class="add-book-label" for="bookTitle">Enter book title </label>
                 <input type='text' name='bookTitle' id="bookTitle" class="add-book-input" required/>
             </div>
             
