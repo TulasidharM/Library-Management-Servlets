@@ -158,9 +158,13 @@
 		  window.location.href = "IssueBookServlet";
 		}
 		function onSearch(event){
+			const form = document.getElementById('issue-book-Form');
+			form.querySelectorAll('[required]').forEach(el => el.removeAttribute('required'));
 			document.getElementById('email').setAttribute('required', 'required');
 		}
 		function onIssue(event){
+			const form = document.getElementById('issue-book-Form');
+			form.querySelectorAll('[required]').forEach(el => el.removeAttribute('required'));
 			document.getElementById('members').setAttribute('required', 'required');
 			document.getElementById('books').setAttribute('required', 'required');
 		}

@@ -132,7 +132,7 @@
             String email=request.getAttribute("email") != null ? request.getAttribute("email").toString() : "";
         %>
 
-        <form action="ReturnBookServlet" method="post">
+        <form id="return-book-Form" action="ReturnBookServlet" method="post">
             <div class="return-book-form-group">
                 <label class="return-book-label" for="members">Select Member</label>
                 <select class="return-book-select" id="members" name="members">
@@ -143,19 +143,18 @@
                 </select>
             </div>
             
-            <form action="ReturnBookServlet" method="post">
-	            <div class="search-group">
-	                <div class="input-container">
-	                    <label class="return-book-label" for="email">Or Enter Email</label>
-	                    <input class="return-book-input" id="email" name="email" type="text" value="${email}"/>
-	                </div>
-	                <button type="submit" name="action" value="Search" class="return-book-button">Search</button>
+            <div class="search-group">
+            	<div class="input-container">
+	            	<label class="return-book-label" for="email">Or Enter Email</label>
+	                <input class="return-book-input" id="email" name="email" type="text" value="${email}"/>
 	            </div>
-            </form>
+	           <button type="submit" name="action" onclick="onSearch(event)" value="Search" class="return-book-button">Search</button>
+	        </div>
+	            
 
             <div class="return-book-form-group">
                 <label class="return-book-label" for="books">Select Book</label>
-                <select class="return-book-select" id="books" name="books" required>
+                <select class="return-book-select" id="books" name="books">
                     <option value="" disabled selected>Choose a book</option>
                     <c:forEach var="book" items="${booksList}">
                         <option value="${book}">${book}</option>
@@ -163,9 +162,27 @@
                 </select>
             </div>
 
-            <input type="submit" name="action" value="Return" class="return-book-submit"/>
-            <input type="submit" name="action" value="Cancel" class="return-book-button secondary"/>
+            <input type="submit" name="action" onclick="onReturn(event)" value="Return" class="return-book-submit"/>
+            <input type="submit" name="action" onclick="cancelForm(event)" value="Cancel" class="return-book-button secondary"/>
         </form>
+        <script>
+		function cancelForm(event) {
+		  const form = document.getElementById('return-book-Form');
+		  form.querySelectorAll('[required]').forEach(el => el.removeAttribute('required'));
+		  window.location.href = "IssueBookServlet";
+		}
+		function onSearch(event){
+			const form = document.getElementById('return-book-Form');
+			form.querySelectorAll('[required]').forEach(el => el.removeAttribute('required'));
+			document.getElementById('email').setAttribute('required', 'required');
+		}
+		function onReturn(event){
+			const form = document.getElementById('return-book-Form');
+			form.querySelectorAll('[required]').forEach(el => el.removeAttribute('required'));
+			document.getElementById('members').setAttribute('required', 'required');
+			document.getElementById('books').setAttribute('required', 'required');
+		}
+	</script>
     </div>
 </body>
 </html>
