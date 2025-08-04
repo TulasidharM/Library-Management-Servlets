@@ -117,7 +117,7 @@
             String email = request.getAttribute("email").toString();
         %>
 
-        <form action="IssueBookServlet" method="post">
+        <form id="issue-book-Form" action="IssueBookServlet" method="post">
             <div class="issue-book-form-group">
                 <label class="issue-book-label" for="members">Select Member</label>
                 <select class="issue-book-select" id="members" name="members">
@@ -134,13 +134,13 @@
                         <label class="issue-book-label" for="email">Or Enter Email</label>
                         <input class="issue-book-input" id="email" name="email" type="text" value="${email}"/>
                     </div>
-                    <input class="issue-book-button" type="submit" name="action" value="Search"/>
+                    <input class="issue-book-button" onclick="onSearch(event)" type="submit" name="action" value="Search"/>
                 </div>
             </div>
 
             <div class="issue-book-form-group">
                 <label class="issue-book-label" for="books">Select Book</label>
-                <select class="issue-book-select" id="books" name="books" required>
+                <select class="issue-book-select" id="books" name="books">
                     <option value="" disabled selected>Choose a book</option>
                     <c:forEach var="book" items="${booksList}">
                         <option value="${book}">${book}</option>
@@ -148,9 +148,23 @@
                 </select>
             </div>
 
-            <input class="issue-book-button" type="submit" name="action" value="Issue"/>
-            <input class="issue-book-button secondary" type="submit" name="action" value="Cancel"/>
+            <input class="issue-book-button" onclick="onIssue(event)" type="submit" name="action" value="Issue"/>
+            <input class="issue-book-button secondary" onclick="cancelForm(event)" type="submit" name="action" value="Cancel"/>
         </form>
+        <script>
+		function cancelForm(event) {
+		  const form = document.getElementById('issue-book-Form');
+		  form.querySelectorAll('[required]').forEach(el => el.removeAttribute('required'));
+		  window.location.href = "IssueBookServlet";
+		}
+		function onSearch(event){
+			document.getElementById('email').setAttribute('required', 'required');
+		}
+		function onIssue(event){
+			document.getElementById('members').setAttribute('required', 'required');
+			document.getElementById('books').setAttribute('required', 'required');
+		}
+	</script>
     </div>
 </body>
 </html>
