@@ -94,7 +94,17 @@
                         <td><%= book.getBook_Category() %></td>
                         <td><%= book.getBook_Status() %></td>
                         <td><%= book.getBook_Availability() %></td>
-                        <td><button>Update</button></td>
+                        <td>
+                            <form action="ViewBooksServlet" method="post" style="margin:0;">
+                                <input type="hidden" name="bookId" value="<%= book.getBook_Id() %>" />
+                                <input type="hidden" name="title" value="<%= book.getBook_Title() %>" />
+                                <input type="hidden" name="author" value="<%= book.getBook_Author() %>" />
+                                <input type="hidden" name="category" value="<%= book.getBook_Category() %>" />
+                                <input type="hidden" name="status" value="<%= book.getBook_Status() %>" />
+                                <input type="hidden" name="availability" value="<%= book.getBook_Availability() %>" />
+                                <button type="submit" name="action" value="Update">Update</button>
+                            </form>
+                        </td>
                     </tr>
                 <%}%>
             </tbody>

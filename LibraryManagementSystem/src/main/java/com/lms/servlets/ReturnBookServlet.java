@@ -60,9 +60,8 @@ public class ReturnBookServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action=request.getParameter("action");
 		PrintWriter out=response.getWriter();
-		System.out.println(action);
+		
 		if("Search".equals(action)) {
-			System.out.println("Came to search for member's books");
 			try {
 				if(request.getParameter("email").isEmpty()) {
 					if(request.getParameter("members").isEmpty()) {
@@ -96,6 +95,7 @@ public class ReturnBookServlet extends HttpServlet {
 		}
 		else if("Return".equals(action)) {
 			try {
+				System.out.println("Trying to return");
 				if(request.getParameter("members").isEmpty() || request.getParameter("books").isEmpty()) {
 					throw new EmptyFieldsException("One or more of the fields are empty");
 				}

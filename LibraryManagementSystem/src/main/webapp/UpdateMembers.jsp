@@ -5,7 +5,75 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Update Member</title>
+<style>
+    .update-member-container {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .update-member-title {
+        color: #34495e;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2em;
+        font-weight: 600;
+    }
+    .update-member-form-group {
+        margin-bottom: 20px;
+    }
+    .update-member-label {
+        display: block;
+        margin-bottom: 8px;
+        color: #34495e;
+        font-weight: 500;
+        font-size: 0.95em;
+    }
+    .update-member-input, .update-member-select, .update-member-textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #7f8c8d;
+        border-radius: 6px;
+        font-size: 1em;
+        color: #34495e;
+        box-sizing: border-box;
+    }
+    .update-member-input:focus, .update-member-select:focus, .update-member-textarea:focus {
+        border-color: #34495e;
+        outline: none;
+        box-shadow: 0 0 5px rgba(52, 73, 94, 0.2);
+    }
+    .update-member-submit, .update-member-cancel {
+        width: 48%;
+        padding: 14px;
+        background-color: #34495e;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1em;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-right: 2%;
+    }
+    .update-member-cancel {
+        background-color: #7f8c8d;
+        margin-right: 0;
+    }
+    .update-member-submit:hover {
+        background-color: #7f8c8d;
+    }
+    .update-member-cancel:hover {
+        background-color: #34495e;
+    }
+    @media (max-width: 600px) {
+        .update-member-container { padding: 15px; }
+        .update-member-submit, .update-member-cancel { width: 100%; margin-right: 0; margin-bottom: 10px; }
+    }
+</style>
 </head>
 <body>
 	<h1>Update Member Details</h1>
