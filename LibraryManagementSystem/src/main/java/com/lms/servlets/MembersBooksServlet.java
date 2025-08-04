@@ -50,12 +50,16 @@ public class MembersBooksServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action=request.getParameter("action");
-		PrintWriter out=response.getWriter();
 		if("Search".equals(action)) {
 			getMembers();
 			try {
-				if(request.getParameter("email").isEmpty()) {
-					if(request.getParameter("members").isEmpty()) {
+				String emailparam = request.getParameter("email");
+				if (emailparam == null) {
+				    email = "";
+				}
+				String membersparam = request.getParameter("members");
+				if(emailparam.isEmpty()) {
+					if(membersparam==null) {
 						throw new EmptyFieldsException("One or more of the fields are empty");
 					}
 					else {
@@ -82,7 +86,13 @@ public class MembersBooksServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 			catch(EmptyFieldsException e) {
-				out.println(e.getMessage());
+				getMembers();
+				request.setAttribute("membersList", members);
+				request.setAttribute("booksList", books);
+				request.setAttribute("email", email);
+				request.setAttribute("fileToRender", "MembersBooks.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+				rd.forward(request, response);
 			}
 		}
 		else {

@@ -116,7 +116,7 @@
             <div class="form-group">
                 <div style="flex: 1;">
                     <label class="form-label" for="books">Select Book:</label>
-                    <select class="form-select" id="books" name="books">
+                    <select class="form-select" id="books" name="books" required>
                         <option value="" disabled selected>Select a Book</option>
                         <c:forEach var="book" items="${booksList}">
                             <option value="${book}" <c:if test="${book == selectedBook}">selected</c:if>>${book}</option>
