@@ -58,13 +58,34 @@ public class IssueBookServlet extends HttpServlet {
 		if("Search".equals(action)) {
 			try {
 				if(req.getParameter("email").isEmpty()) {
-					throw new EmptyFieldsException("One or more of the fields are empty");
+					if(req.getParameter("members").isEmpty()) {
+						throw new EmptyFieldsException("One or more of the fields are empty");
+					}
+					else {
+						String member= req.getParameter("members");
+						req.setAttribute("membersList", members);
+						req.setAttribute("selectedMember", member);
+						req.setAttribute("email", email);
+						req.setAttribute("booksList", books);
+						req.setAttribute("fileToRender", "IssueBook.jsp");
+						RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+						rd.forward(req, res);
+					}
 				}
-				String email=req.getParameter("email");
-				Member member=memberService.getMemberByEmail(email);
-				String memberField = member.getMember_Id()+". "+member.getMember_Name();
+				else {
+					String email=req.getParameter("email");
+					Member member=memberService.getMemberByEmail(email);
+					getMembersAndBooks();
+					if(!(member==null)) {
+						String memberField = member.getMember_Id()+". "+member.getMember_Name();
+						req.setAttribute("selectedMember", memberField);
+					}
+					else {
+						req.setAttribute("alertMessage", "No Member Found With the given email");
+						
+					}
+				}
 				req.setAttribute("membersList", members);
-				req.setAttribute("selectedMember", memberField);
 				req.setAttribute("email", email);
 				req.setAttribute("booksList", books);
 				req.setAttribute("fileToRender", "IssueBook.jsp");

@@ -78,11 +78,18 @@ public class ReturnBookServlet extends HttpServlet {
 				else {
 					String email=request.getParameter("email");
 					Member member=memberService.getMemberByEmail(email);
-					String memberField = member.getMember_Id()+". "+member.getMember_Name();
-					request.setAttribute("membersList", members);
-					request.setAttribute("selectedMember", memberField);
-					request.setAttribute("email", email);
-					getMemberBooks(memberField);
+					if(!(member==null)) {
+						String memberField = member.getMember_Id()+". "+member.getMember_Name();
+						getMemberBooks(memberField);
+						request.setAttribute("membersList", members);
+						request.setAttribute("selectedMember", memberField);
+						request.setAttribute("email", email);
+					}
+					else {
+						request.setAttribute("alertMessage", "No Member Found With the given email");
+						request.setAttribute("membersList", members);
+						request.setAttribute("email", email);
+					}
 				}
 				request.setAttribute("booksList", books);
 				request.setAttribute("fileToRender", "ReturnBook.jsp");

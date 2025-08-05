@@ -104,6 +104,13 @@
             padding: 20px;
         }
     </style>
+    <script type="text/javascript">
+    	<% String alertMessage = (String) request.getAttribute("alertMessage"); %>
+    	
+    	<%if(request.getAttribute("alertMessage") != null){%>
+    	 	alert('<%= alertMessage %>');
+    	<%}%>
+    </script>
 </head>
 <body>
     <div class="members-books-container">
@@ -129,7 +136,7 @@
                 <div class="search-group">
                     <div class="search-input-container">
                         <label class="form-label" for="email">Or Email of Member:</label>
-                        <input class="form-input" id="email" name="email" type="text" value="${email}"/>
+                        <input class="form-input" id="email" name="email" type="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$" value="${email}"/>
                     </div>
                     <input class="form-button" type="submit" name="action" value="Search"/>
                 </div>

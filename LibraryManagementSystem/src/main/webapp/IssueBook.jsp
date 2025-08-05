@@ -107,6 +107,13 @@
             white-space: nowrap;
         }
     </style>
+    <script type="text/javascript">
+    	<% String alertMessage = (String) request.getAttribute("alertMessage"); %>
+    	
+    	<%if(request.getAttribute("alertMessage") != null){%>
+    	 	alert('<%= alertMessage %>');
+    	<%}%>
+    </script>
 </head>
 <body>
     <div class="issue-book-container">
@@ -132,7 +139,7 @@
                 <div class="search-group">
                     <div class="input-container">
                         <label class="issue-book-label" for="email">Or Enter Email</label>
-                        <input class="issue-book-input" id="email" name="email" type="text" value="${email}"/>
+                        <input class="issue-book-input" id="email" name="email" type="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$" value="${email}"/>
                     </div>
                     <input class="issue-book-button" onclick="onSearch(event)" type="submit" name="action" value="Search"/>
                 </div>
@@ -160,7 +167,9 @@
 		function onSearch(event){
 			const form = document.getElementById('issue-book-Form');
 			form.querySelectorAll('[required]').forEach(el => el.removeAttribute('required'));
-			document.getElementById('email').setAttribute('required', 'required');
+			if(!document.getElementById('members').value){
+				document.getElementById('email').setAttribute('required', 'required');
+			}
 		}
 		function onIssue(event){
 			const form = document.getElementById('issue-book-Form');

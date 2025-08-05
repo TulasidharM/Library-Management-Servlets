@@ -122,6 +122,13 @@
             height: 45px;
         }
     </style>
+    <script type="text/javascript">
+    	<% String alertMessage = (String) request.getAttribute("alertMessage"); %>
+    	
+    	<%if(request.getAttribute("alertMessage") != null){%>
+    	 	alert('<%= alertMessage %>');
+    	<%}%>
+    </script>
 </head>
 <body>
     <div class="return-book-container">
@@ -146,7 +153,7 @@
             <div class="search-group">
             	<div class="input-container">
 	            	<label class="return-book-label" for="email">Or Enter Email</label>
-	                <input class="return-book-input" id="email" name="email" type="text" value="${email}"/>
+	                <input class="return-book-input" id="email" name="email" type="email" pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$" value="${email}"/>
 	            </div>
 	           <button type="submit" name="action" onclick="onSearch(event)" value="Search" class="return-book-button">Search</button>
 	        </div>

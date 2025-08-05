@@ -1,7 +1,6 @@
 package com.lms.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -74,11 +73,18 @@ public class MembersBooksServlet extends HttpServlet {
 				else {
 					String email=request.getParameter("email");
 					Member member=memberService.getMemberByEmail(email);
-					getBooks(member.getMember_Id());
-					String memberField = member.getMember_Id()+". "+member.getMember_Name();
-					request.setAttribute("membersList", members);
-					request.setAttribute("selectedMember", memberField);
-					request.setAttribute("email", email);
+					if(!(member==null)) {
+						getBooks(member.getMember_Id());
+						String memberField = member.getMember_Id()+". "+member.getMember_Name();
+						request.setAttribute("membersList", members);
+						request.setAttribute("selectedMember", memberField);
+						request.setAttribute("email", email);
+					}
+					else {
+						request.setAttribute("alertMessage", "No Member Found With the given email");
+						request.setAttribute("membersList", members);
+						request.setAttribute("email", email);
+					}
 				}
 				request.setAttribute("booksList", books);
 				request.setAttribute("fileToRender", "MembersBooks.jsp");
