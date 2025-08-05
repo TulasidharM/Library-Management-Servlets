@@ -174,7 +174,9 @@
 		function onSearch(event){
 			const form = document.getElementById('return-book-Form');
 			form.querySelectorAll('[required]').forEach(el => el.removeAttribute('required'));
-			document.getElementById('email').setAttribute('required', 'required');
+			if(!document.getElementById('members').value){
+				document.getElementById('email').setAttribute('required', 'required');
+			}
 		}
 		function onReturn(event){
 			const form = document.getElementById('return-book-Form');
