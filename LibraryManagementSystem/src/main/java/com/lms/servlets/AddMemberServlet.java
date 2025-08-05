@@ -39,11 +39,17 @@ public class AddMemberServlet extends HttpServlet {
 				String address = request.getParameter("address");
 				Member member =new Member(name, email, mobile_no, Gender, address);
 				memberService.addNewMember(member);
+				request.setAttribute("alertMessage", "Succefully added member");
+			}
+			catch(EmptyFieldsException | IllegalArgumentException e) {
+				
+				request.setAttribute("alertMessage", e.getMessage());
+				
+			}finally {
+				request.setAttribute("fileToRender", "AddMember.jsp");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
-			catch(EmptyFieldsException e) {
-				out.println(e.getMessage());
-			}
+			
 		}
 		else {
 			request.getRequestDispatcher("index.jsp").forward(request, response);

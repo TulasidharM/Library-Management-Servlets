@@ -41,7 +41,9 @@ public class AddBookServlet extends HttpServlet {
 			
 			try {
 				bookService.addNewBook(book);
+				request.setAttribute("alertMessage", "Book Added Successfully.");
 			} catch (DBConstrainsException e) {
+				request.setAttribute("alertMessage", "Problem adding book : " + e.getMessage());
 				System.out.println("couldn't add book " + e.getMessage());
 			}
 			request.setAttribute("fileToRender", "AddBook.jsp");
