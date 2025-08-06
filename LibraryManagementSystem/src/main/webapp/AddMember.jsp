@@ -47,7 +47,7 @@
         box-shadow: 0 0 5px rgba(52, 73, 94, 0.2);
     }
     .add-member-submit {
-        width: 48%;
+        width: 100%;
         padding: 14px;
         background-color: #34495e;
         color: white;
@@ -75,6 +75,34 @@
     <div class="add-member-container">
         <h1 class="add-member-title">Add Member</h1>
         <form id="add-member-Form" action="AddMemberServlet" method="post">
+        <%if(request.getAttribute("email")!=null) {
+        %>
+        <div class="add-member-form-group">
+                <label class="add-member-label" for="name">Name:</label>
+                <input type="text" id="name" name="MemberName" class="add-member-input" placeholder="Enter Member Name" value="<%=request.getAttribute("MemberName") %>" required/>
+            </div>
+            <div class="add-member-form-group">
+                <label class="add-member-label" for="email">Email:</label>
+                <input type="email" id="email" name="email" class="add-member-input" value="<%=request.getAttribute("email") %>" placeholder="Enter Email Address(abc@gmail.com)" required/>
+            </div>
+            <div class="add-member-form-group">
+                <label class="add-member-label" for="number">Mobile Number:</label>
+                <input type="text" id="number" pattern="\d{10}" name="Mobile Number" class="add-member-input" value="<%=request.getAttribute("Mobile Number") %>" placeholder="Enter Ph-No (1234345467)" required/>
+            </div>
+            <div class="add-member-form-group">
+                <label class="add-member-label" for="gender">Gender:</label>
+                <select id="gender" name="gender" class="add-member-select" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="M" <%= "M".equals(request.getAttribute("gender")) ? "selected" : "" %>>M</option>
+                    <option value="F"<%= "F".equals(request.getAttribute("gender")) ? "selected" : "" %>>F</option>
+                </select>
+            </div>
+            <div class="add-member-form-group">
+                <label class="add-member-label" for="address">Address:</label>
+                <textarea rows="3" id="address" name="address" class="add-member-textarea" required>request.getAttribute("address")</textarea>
+            </div>
+        <%}else{ 
+        %>
             <div class="add-member-form-group">
                 <label class="add-member-label" for="name">Name:</label>
                 <input type="text" id="name" name="MemberName" class="add-member-input" placeholder="Enter Member Name" required/>
@@ -99,7 +127,8 @@
                 <label class="add-member-label" for="address">Address:</label>
                 <textarea rows="3" id="address" name="address" class="add-member-textarea" required></textarea>
             </div>
-            <input type="submit" name="action" value="Submit" class="add-member-submit"/>
+        <%} %>
+        	<input type="submit" name="action" value="Submit" class="add-member-submit"/>
             <input type="submit" onclick="cancelForm(event)" name="action" value="Cancel" class="add-member-submit" style="background-color:#7f8c8d;"/>
         </form>
     </div>

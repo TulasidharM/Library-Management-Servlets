@@ -30,6 +30,7 @@ public class AddMemberServlet extends HttpServlet {
 		if("Submit".equals(action)) {
 			try {
 				if(request.getParameter("MemberName").isEmpty() || request.getParameter("email").isEmpty() || request.getParameter("Mobile Number").isEmpty() || request.getParameter("gender").isEmpty() ||request.getParameter("address").isEmpty()) {
+					request.setAttribute("alertMessage", "Fields should not be empty");
 					throw new EmptyFieldsException("One or more of the fields are empty");
 				}
 				String name = request.getParameter("MemberName");
@@ -42,7 +43,11 @@ public class AddMemberServlet extends HttpServlet {
 				request.setAttribute("alertMessage", "Succefully added member");
 			}
 			catch(EmptyFieldsException | IllegalArgumentException e) {
-				
+				request.setAttribute("MemberName", request.getParameter("MemberName"));
+				request.setAttribute("email", request.getParameter("email"));
+				request.setAttribute("Mobile Number", request.getParameter("Mobile Number"));
+				request.setAttribute("gender", request.getParameter("gender"));
+				request.setAttribute("address", request.getParameter("address"));
 				request.setAttribute("alertMessage", e.getMessage());
 				
 			}finally {
