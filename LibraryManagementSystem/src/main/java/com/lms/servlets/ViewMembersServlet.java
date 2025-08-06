@@ -2,7 +2,6 @@ package com.lms.servlets;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -31,7 +30,6 @@ public class ViewMembersServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action=request.getParameter("action");
-		PrintWriter out=response.getWriter();
 		if("Update".equals(action)) {
 			int memberId = Integer.parseInt(request.getParameter("memberId"));
 			String name = request.getParameter("name");
@@ -53,10 +51,18 @@ public class ViewMembersServlet extends HttpServlet {
 			member.setMobile_No(request.getParameter("Mobile Number").trim());
 			member.setGender(request.getParameter("gender").trim().charAt(0));
 			member.setAddress(request.getParameter("address").trim());
-			memberService.updateMember(member);
-			members = memberService.getAllMembers();
-			request.setAttribute("membersList", members);
-			request.setAttribute("fileToRender", "ViewMembers.jsp");
+			try {
+				memberService.updateMember(member);
+				members = memberService.getAllMembers();
+				request.setAttribute("membersList", members);
+				request.setAttribute("fileToRender", "ViewMembers.jsp");
+			}
+			catch(IllegalArgumentException e){
+				request.setAttribute("member",member);
+				request.setAttribute("alertMessage", e.getMessage());
+				request.setAttribute("fileToRender", "UpdateMembers.jsp");
+			}
+			
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		}

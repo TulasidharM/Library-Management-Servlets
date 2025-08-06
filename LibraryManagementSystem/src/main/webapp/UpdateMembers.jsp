@@ -74,6 +74,13 @@
         .update-member-submit, .update-member-cancel { width: 100%; margin-right: 0; margin-bottom: 10px; }
     }
 </style>
+<script type="text/javascript">
+    	<% String alertMessage = (String) request.getAttribute("alertMessage"); %>
+    	
+    	<%if(request.getAttribute("alertMessage") != null){%>
+    	 	alert('<%= alertMessage %>');
+    	<%}%>
+    </script>
 </head>
 <body>
     <div class="update-member-container">
