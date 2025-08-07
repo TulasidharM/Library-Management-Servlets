@@ -99,7 +99,7 @@
             </div>
             <div class="add-member-form-group">
                 <label class="add-member-label" for="address">Address:</label>
-                <textarea rows="3" id="address" name="address" class="add-member-textarea" required>request.getAttribute("address")</textarea>
+                <textarea rows="3" id="address" name="address" class="add-member-textarea" required><%out.println(request.getAttribute("address")) ;%></textarea>
             </div>
         <%}else{ 
         %>
