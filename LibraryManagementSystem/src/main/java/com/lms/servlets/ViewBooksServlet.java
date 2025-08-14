@@ -1,7 +1,6 @@
 package com.lms.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -69,7 +68,17 @@ public class ViewBooksServlet extends HttpServlet {
 	            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 	            rd.forward(request, response);
 			} catch (DBConstrainsException e) {
-				request.setAttribute("fileToRender", "ViewBooks.jsp");
+				 String[] categories = {"Fiction",
+		                    "Non-Fiction",
+		                    "Science",
+		                    "Technology",
+		                    "History",
+		                    "Biography"};
+				 
+				request.setAttribute("book",book);
+				request.setAttribute("categories", categories);
+				request.setAttribute("fileToRender", "UpdateBook.jsp");
+				request.setAttribute("alertMessage", e.getMessage());
 	            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 	            rd.forward(request, response);
 			}

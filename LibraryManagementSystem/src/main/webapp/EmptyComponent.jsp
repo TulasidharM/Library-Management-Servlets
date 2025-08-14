@@ -39,7 +39,7 @@
             gap: 20px;
             margin: 20px 0;
         }
-
+	
         .feature-item {
             background-color: white;
             padding: 15px;
@@ -52,27 +52,6 @@
             margin: 0 0 10px 0;
         }
 
-        .quick-links {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .quick-links a {
-            display: block;
-            padding: 12px;
-            background-color: #4C7298;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            text-align: center;
-            transition: background-color 0.3s;
-        }
-
-        .quick-links a:hover {
-            background-color: #0056b3;
-        }
     </style>
 </head>
 <body>
@@ -97,11 +76,11 @@
                 </div>
                 <div class="feature-item">
                     <h4>Issue & Return</h4>
-                    <p>Streamlined book borrowing and return process</p>
+                    <p>Streamlined book issue and return process</p>
                 </div>
                 <div class="feature-item">
                     <h4>Reports Generation</h4>
-                    <p>Comprehensive reporting and analytics tools</p>
+                    <p>Comprehensive reporting feature for better understanding your inventory!</p>
                 </div>
             </div>
         </div>

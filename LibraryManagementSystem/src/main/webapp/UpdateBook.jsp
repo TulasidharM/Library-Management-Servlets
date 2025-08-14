@@ -103,6 +103,12 @@
 	}
 }
 </style>
+	<script type="text/javascript">
+    	<% String alertMessage = (String) request.getAttribute("alertMessage"); %>	
+    	<%if(request.getAttribute("alertMessage") != null){%>
+    	 	alert('<%= alertMessage %>');
+    	<%}%>
+    </script>
 </head>
 <body>
 	<div class="update-book-container">
